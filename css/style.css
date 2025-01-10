@@ -2000,3 +2000,19 @@ span.example {
     display: none;
   }
 }
+
+
+#buttonai {
+  display: none;
+}
+@media (max-width: 600px) {
+  #buttonai {
+    display: block;
+    position: absolute;
+    top: 475px;
+    right: 0;
+    border: none;
+    outline: none;
+  }
+  
+}

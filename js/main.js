@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const terminal = document.getElementById('terminal');
     const input = document.getElementById('terminal-input');
-    
-    // Sửa những câu lệnh ở đây
+    const buttonAI = document.getElementById('buttonai'); // Nút cho mobile
+
     const commands = {
         help: `
             <div class="response system">
@@ -70,36 +70,46 @@ document.addEventListener('DOMContentLoaded', () => {
         terminal.scrollTop = terminal.scrollHeight;
     };
 
-    input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            const commandText = input.value.trim();
-            if (commandText) {
-                addCommandToTerminal(`> ${commandText}`);
-                if (commandText === 'link') {
-                    document.getElementById('link-popup').classList.toggle('visible');
-                    const response = `<div class="response system"><span>Wallet protocol:</span> UNAVAILABLE. Standby for future update.</div>`;
-                    addCommandToTerminal(response, false);
-                    bindClickEvents();
-                    input.value = '';
-                    return;
-                }
-                const response = commands[commandText] || `<div class="response system">Command not found: <span class="command">${commandText}</span></div>`;
+    const handleCommand = () => {
+        const commandText = input.value.trim();
+        if (commandText) {
+            addCommandToTerminal(`> ${commandText}`);
+            if (commandText === 'link') {
+                document.getElementById('link-popup').classList.toggle('visible');
+                const response = `<div class="response system"><span>Wallet protocol:</span> UNAVAILABLE. Standby for future update.</div>`;
                 addCommandToTerminal(response, false);
                 bindClickEvents();
+                input.value = '';
+                return;
             }
-            input.value = '';
+            const response = commands[commandText] || `<div class="response system">Command not found: <span class="command">${commandText}</span></div>`;
+            addCommandToTerminal(response, false);
+            bindClickEvents();
         }
+        input.value = '';
+    };
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Ngăn chặn sự kiện mặc định
+            handleCommand();
+        }
+    });
+
+    buttonAI.addEventListener('click', () => {
+        handleCommand();
     });
 
     const bindClickEvents = () => {
         const clickableCommands = document.querySelectorAll('.clickable');
         clickableCommands.forEach((element) => {
+            element.removeEventListener('click', handleCommand); // Xóa sự kiện trùng lặp
             element.addEventListener('click', () => {
                 const command = element.getAttribute('data-command');
                 if (commands[command]) {
                     addCommandToTerminal(`> ${command}`);
                     addCommandToTerminal(commands[command], false);
-                    bindClickEvents(); 
+                    bindClickEvents();
                 }
             });
         });
