@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleCommand = () => {
-        const commandText = input.value.trim();
+        const commandText = input.value.trim().toLowerCase();
         if (commandText) {
             addCommandToTerminal(`> ${commandText}`);
             if (commandText === 'link') {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     input.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Ngăn chặn sự kiện mặc định
+            event.preventDefault();
             handleCommand();
         }
     });

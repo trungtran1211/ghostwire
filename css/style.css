@@ -2009,10 +2009,12 @@ span.example {
   #buttonai {
     display: block;
     position: absolute;
-    top: 475px;
+    bottom: 30px;
     right: 0;
     border: none;
     outline: none;
   }
-  
+  #terminal-input-wrapper {
+    height: 100% !important;
+  }
 }
