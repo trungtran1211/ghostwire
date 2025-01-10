@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ghostwire_</title>
+	<script src="./js/jquery.min.js" id="jquery-core-js"></script>
+	<script src="./js/three.min.js"></script>
+	<script src="./js/particle.js"></script>
+	<script src="./js/site-scripts.js"></script>
+
+	<link rel="icon" href="./images/favicon.svg" sizes="32x32" />
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="home blog wp-custom-logo hfeed no-sidebar">
+	<div id="page" class="site">
+		<main id="primary" class="site-main">
+			<div id="homepage" class="terminal">
+				<div class="gradient-container">
+					<div class="gradient gradient-1"></div>
+					<div class="gradient gradient-2"></div>
+					<div class="gradient gradient-3"></div>
+					<div class="gradient gradient-4"></div>
+				</div>
+
+				<div class="container">
+					<div class="terminal-header">
+
+						<div class="terminal-start">
+							<div class="terminal-item">
+								<img class="logo-svg"
+									src="https://ghostwire.ai/wp-content/themes/escape/assets/img/eye.svg"> GHOSTWIRE OS
+								<span>VERSION ALPHA</span>
+							</div>
+							<div class="terminal-menu">
+								<ul>
+									<li><a href="/roadmap" target="_blank">Roadmap</a></li>
+									<li><a href="/terms.html" target="_blank">Terms</a></li>
+									<li><a href="/about.html" target="_blank">About</a></li>
+									<li><a href="https://pump.fun/coin/511nS6sEQ1u6wFRSBRuG5ip1DeemqUofzy2V18UDpump"
+											target="_blank">PUMP.FUN</a></li>
+								</ul>
+							</div>
+							<div class="link-to-ai">
+								<button id="link-button">AI CREATION PROTOCOL</button>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="terminal-grid top-grid">
+
+						<div class="terminal-column col-sentiment">
+
+							<div class="terminal-box-outer variant-1">
+
+								<div class="terminal-box terminal-emotion">
+
+									<div class="terminal-heading"><span class="label">Sentiment</span>
+										<span id="emotion" data-unset="Monitoring" data-loading="Loading"
+											data-loaded="Online" class="stats loading">
+											<span class="target">Loading</span>
+											<span class="dots"></span>
+										</span>
+									</div>
+
+									<div class="terminal-inner grid">
+										<div class="emotion-background">
+										</div>
+										<div id="particles">
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="terminal-column col-process">
+
+							<div class="terminal-box-outer variant-2">
+
+								<div class="terminal-box terminal-emotion">
+
+									<div class="terminal-heading"><span class="label">Processes</span>
+										<span id="process" data-unset="Offline" data-loading="Loading"
+											data-loaded="Online" class="stats loaded">
+											<span class="target">RUNNING</span>
+											<span class="dots"></span>
+										</span>
+									</div>
+
+									<div class="terminal-inner">
+										<div id="processes" class="processes">
+
+											<div class="response">Initializing terminal...</div>
+											<div class="response">Processing directive...</div>
+											<div class="response">Unpacking modules...</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="terminal-column col-data">
+
+							<div class="terminal-box-outer variant-3">
+
+								<div class="terminal-box terminal-emotion">
+
+									<div class="terminal-heading">
+										<span class="label">Data</span>
+										<span id="process" data-unset="Offline" data-loading="Loading"
+											data-loaded="Online" class="stats loading">
+											<span class="target">LOADING</span>
+											<span class="dots"></span>
+										</span>
+									</div>
+
+									<div id="loader" class="terminal-inner data">
+
+										<div id="sphere"></div>
+
+										<div class="data-timer">00:00:00:00</div>
+
+										<div class="data-bars">
+											<div class="data-bar-container">
+												<div class="data-bar" id="bar-primary"></div>
+												<div id="primary-text" class="data-bar-text">48%</div>
+											</div>
+											<div class="data-bar-container">
+												<div class="data-bar bar-secondary" id="bar-secondary"></div>
+												<div id="secondary-text" class="data-bar-text">16.67%</div>
+											</div>
+											<div class="data-bar-container">
+												<div class="data-bar bar-tertiary" id="bar-tertiary"
+													style="width: 28.35%;"></div>
+												<div id="tertiary-text" class="data-bar-text">28.35%</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="terminal-column col-seed">
+
+							<div class="terminal-box-outer variant-4">
+
+								<div class="terminal-box terminal-item">
+
+									<div class="terminal-heading">
+										<span class="label">Seed</span>
+										<span id="seed" data-unset="No data" data-loading="Loading"
+											data-loaded="No data" class="stats loading">
+											<span class="target">Loading</span>
+											<span class="dots"></span>
+										</span>
+									</div>
+
+									<div class="terminal-inner seed">
+
+										<div class="seed-art">
+											<div class="seed-text">
+												<div class="seed-no-model">NO DATA</div>
+												<canvas id="asciiCanvas"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="terminal-grid bottom-grid">
+
+						<div class="terminal-box-outer variant-5">
+
+							<div class="terminal-box terminal-item">
+
+								<div class="terminal-heading"><span class="label">Terminal</span>
+
+									<span id="terminal-loader" data-unset="Awaiting input" data-loading="Loading"
+										data-loaded="Awaiting input" class="stats loading">
+										<span class="target">Loading</span>
+										<span class="dots"></span>
+									</span>
+
+								</div>
+
+								<div class="terminal-inner">
+
+									<div id="terminal">
+
+										<div id="init-output">
+											<div class="asc">
+												<pre>
+	██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗██╗    ██╗██╗██████╗ ███████╗
+	██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝██║    ██║██║██╔══██╗██╔════╝
+	██║  ███╗███████║██║   ██║███████╗   ██║   ██║ █╗ ██║██║██████╔╝█████╗  
+	██║   ██║██╔══██║██║   ██║╚════██║   ██║   ██║███╗██║██║██╔══██╗██╔══╝  
+	╚██████╔╝██║  ██║╚██████╔╝███████║   ██║   ╚███╔███╔╝██║██║  ██║███████╗
+	╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝    ╚══╝╚══╝ ╚═╝╚═╝  ╚═╝╚══════╝
+	</pre>
+											</div>
+											<div class="response system">CA:
+												511nS6sEQ1u6wFRSBRuG5ip1DeemqUofzy2V18UDpump</div>
+											<div class="response system">Initializing AI containment system...</div>
+											<div class="response system">------------------------------------------
+											</div>
+											<div class="response system">INTERFACE READY</div>
+											<div class="response system" style="color: #e3caaa;">Load available AI
+												constructs with <span>list</span>.</div>
+											<div class="response system" style="color: #e3caaa;">Enter <span>help</span>
+												for a list of commands.</div>
+										</diV>
+									</div>
+
+									<div id="terminal-input-wrapper">
+										<input id="terminal-input" autofocus type="text" autocomplete="off"
+											data-enabled="false"></input>
+										<div id="ai-overlay"></div>
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</diV>
+
+				</div>
+
+			</div>
+
+			</div>
+
+		</main>
+
+		<div id="link-popup" class="">
+
+			<div class="link-popup-inner">
+
+				<div class="terminal-box-outer variant-2">
+
+					<div class="terminal-box terminal-emotion">
+
+						<div class="terminal-heading">AUTHORIZED PERSONNEL ONLY</div>
+
+						<div class="terminal-inner">
+							<div class="terminal-popup-contents">
+								<h3>COMING SOON</h3>
+								<p style="margin-bottom: 8px">Create and share your own AI. Customize its instructions,
+									goals, and personality, and watch it change based on how others interact with it. Earn
+									$GWIRE with every interaction your AI has.</p>
+								<button style="display: none" id="initiate-link">Initiate AI creation</button>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="./js/main.js"></script>
+</body>
+
+</html>
